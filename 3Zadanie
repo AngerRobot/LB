@@ -1,0 +1,29 @@
+#include <iostream>
+
+char* strrchr(char* s, int c) {
+    char* lastOccurrence = nullptr; 
+
+    while (*s != '0') { 
+        if (*s == static_cast<char>(c)) { 
+            lastOccurrence = s;
+        }
+        s++; 
+    }
+
+    return lastOccurrence; 
+}
+
+int main() {
+    char str[] = "Hello, world! This is a test string.";
+    char ch = 'i';
+
+    char* result = strrchr(str, ch);
+
+    if (result) {
+        std::cout << "Последнее вхождение символа '" << ch << "': " << result << std::endl;
+    } else {
+        std::cout << "Символ '" << ch << "' не найден в строке." << std::endl;
+    }
+
+    return 0;
+}
