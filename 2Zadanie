@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    const int rows = 5;
+    const int cols = 4;
+    std::vector<int> oneDArray(20); 
+    int twoDArray[rows][cols]; 
+
+    for (int i = 0; i < 20; ++i) {
+        oneDArray[i] = i + 1; 
+    }
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            twoDArray[i][j] = oneDArray[i * cols + j];
+        }
+    }
+
+    std::cout << "Двумерный массив (5x4):" << std::endl;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << twoDArray[i][j] << "\t"; 
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
