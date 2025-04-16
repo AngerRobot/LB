@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
+void processArray(std::vector<double>& array, double& average, std::vector<bool>& booleanArray) {
+    double sum = 0.0;
+    int n = array.size();
+    
+ 
+    for (int i = 0; i < n; ++i) {
+        array[i] = ((rand() % 3000) / 100.0) - 15.0; 
+        sum += array[i];
+    }
+    
+    average = sum / n;
+    
+    for (int i = 0; i < n; ++i) {
+        booleanArray[i] = (array[i] > average);
+    }
+}
+
+int main() {
+    const int n = 20;
+    std::vector<double> array(n, 0.0); 
+    double average = 0.0;
+    std::vector<bool> booleanArray(n);
+
+    std::srand(static_cast<unsigned int>(std::time(0)));
+
+    processArray(array, average, booleanArray);
+
+    std::cout <<"Сгенерированный массив";
+    for (const auto& num : array) {
+        std::cout << num << " ";
+    }
+    std::cout << "\nСреднее значение: " << average << std::endl;
+    
+    std::cout << "Булев массив: ";
+    for (const auto& value : booleanArray) {
+        std::cout << (value ? "T " : "F ");
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
